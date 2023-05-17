@@ -88,6 +88,7 @@ fn get_links(page: String, visited: &mut Vec<String>, method: ChoiceMethod) -> V
                         && !anchor_href.starts_with("/wiki/Help:")
                         && !anchor_href.starts_with("/wiki/Template:")
                         && !anchor_href.starts_with("/wiki/Wikipedia:")
+                        && !anchor_href.starts_with("/wiki/Geographic_coordinate_system")
                     {
                         Some(anchor_href.into_owned())
                     } else {

@@ -12,6 +12,9 @@ struct Args {
 
     #[arg(short, long, default_value_t = ChoiceMethod::First)]
     method: ChoiceMethod,
+
+    // #[arg(short, long, default_value_t = String::from("Philosophy"))]
+    // end_page: String,
 }
 
 fn main() {
@@ -102,7 +105,8 @@ fn get_links(page: String, visited: &mut Vec<String>, method: ChoiceMethod) -> V
 
     let next = match method {
         ChoiceMethod::First => urls.first().to_owned().unwrap(),
-        ChoiceMethod::Last => urls.last().to_owned().unwrap(),
+        ChoiceMethod::Last => urls.last().to_owned().
+        unwrap(),
         ChoiceMethod::Random => &urls[rng.gen_range(0..urls.len())],
     }
     .to_owned();
@@ -111,6 +115,7 @@ fn get_links(page: String, visited: &mut Vec<String>, method: ChoiceMethod) -> V
     if visited.contains(&next) {
         println!("[DONE] {}", &owned_next);
         vec![next.into()]
+
     } else {
         println!("[CRAWL] {}", &owned_next);
         visited.push(owned_next);
